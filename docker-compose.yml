@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "7777:3000"
+    depends_on:
+      - backend
+
+  backend:
+    build: 
+      context: ./Backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=haitham
+      - DB_PASSWORD=Test@010
+      - DB_NAME=chat
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Test@010
+      - MYSQL_DATABASE=chat
+      - MYSQL_USER=haitham
+      - MYSQL_PASSWORD=Test@010
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
