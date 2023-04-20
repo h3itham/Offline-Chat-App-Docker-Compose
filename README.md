@@ -2,6 +2,8 @@
 
 This project is an offline chat app that allows users to communicate with each other without an internet connection. It uses Docker Compose to deploy the app, React for the front-end, Django for the back-end with REST API, and MySQL as the database engine.
 
+![](./chat.png)
+
 ## Installation
 
 To install the app, follow these steps:
